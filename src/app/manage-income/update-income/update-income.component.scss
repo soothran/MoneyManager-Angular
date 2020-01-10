@@ -1,0 +1,13 @@
+.delete-income-content{
+    position: relative;
+    .delete-link-wrapper{
+        position: absolute;
+        top: 5%;
+        right: 10%;
+        a{
+            font-size: 22px;
+            font-weight: 300;
+            color: #f03434;
+        }
+    }
+}

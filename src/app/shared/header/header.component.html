@@ -1,0 +1,43 @@
+<div class="header-main d-flex">
+  <div class="header-wrapper d-flex">
+    <div class="logo-wrapper">
+      <h1><a href="">Money Manager</a></h1>
+      <h6>Your finance partner</h6>
+    </div>
+    <div class="nav-wrapper container" *ngIf="isLoggedIn$ | async as isLoggedIn">
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/home']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/expense']">Expense</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/income']">Income</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/share']">Share expense</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Analysis</a>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            <ng-container *ngIf="loggedInUser$ | async as loggedInUser"> Hello {{loggedInUser}}</ng-container>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/my-profile']">My Profile</a>
+            <!-- <a class="dropdown-item" href="#">Search a friend</a> -->
+            <a class="dropdown-item" [routerLink]="['/share']">Budget</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()" href="#">Logout</a>
+          </div>
+        </li>
+        <li class="nav-item d-none">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

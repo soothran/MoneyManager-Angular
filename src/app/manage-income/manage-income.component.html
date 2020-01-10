@@ -1,0 +1,26 @@
+<div class="manage-income-main">
+    <div class="manage-income-header inner-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <ul class="nav justify-content-center">
+              <li class="nav-item" [ngClass]="{'selected': getRoute() === '/income/add'}">
+                <button (click)="incomeInernalNav('add')" class="nav-link active">Add income</button>
+              </li>
+              <li class="nav-item" [ngClass]="{'selected': getRoute() === '/income/update'}">
+                <button (click)="incomeInernalNav('update')" class="nav-link">Update/ Remove income</button>
+              </li>
+              <li class="nav-item" [ngClass]="{'selected': getRoute() === '/income/view'}">
+                <button (click)="incomeInernalNav('view')" class="nav-link" href="#">View previous incomes</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <router-outlet></router-outlet>
+  
+  

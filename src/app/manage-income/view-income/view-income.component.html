@@ -1,0 +1,59 @@
+<div class="vi-main">
+  <div class="vi-content-wrapper mm-content-wrapper">
+    <div class="vi-contents">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Category</th>
+            <th scope="col">Title</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="allInc.length > 0">
+          <tr *ngFor="let item of allInc">
+            <td>{{formatDate(item.incomeTime)}}</td>
+            <td>{{item.categoryName}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.notes}}</td>
+            <td><img width="50" height="50" *ngIf="item.image !== ''" src="{{item.image}}" alt="Image"></td>
+            <td>
+              <div class="d-flex flex-column">
+                <!-- <span><a class="link" (click)="shareIncome(shareIncOptions, item)">Share</a></span> -->
+                <span><a class="link" (click)="updateIncome(item)">Update</a></span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="allInc.length === 0">
+          <tr>
+            <td>No incomes yet recorded</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #shareIncOptions let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Share with?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="d-flex w-100 flex-row">
+      <div (click)="goToFriendShare()" class="link flex-grow-1 text-center">
+        Friends
+      </div>
+      <div (click)="goToGroupShare()" class="link flex-grow-1 text-center">
+        Groups
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,61 @@
+<div class="ve-main">
+  <div class="ve-content-wrapper mm-content-wrapper">
+    <div class="ve-contents">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Category</th>
+            <th scope="col">Title</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="allExp.length > 0">
+          <tr *ngFor="let item of allExp">
+            <td>{{formatDate(item.expenseTime)}}</td>
+            <td>{{item.categoryName}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.notes}}</td>
+            <td><img width="50" height="50" *ngIf="item.image !== ''" src="{{item.image}}" alt="Image"></td>
+            <td>
+              <div class="d-flex flex-column">
+                <span><a class="link" *ngIf="item.status !== 'SHARED'"
+                    (click)="shareExpense(shareExpOptions, item)">Share</a></span>
+                <span *ngIf="item.status === 'SHARED'">Shared</span>
+                <span><a class="link" (click)="updateExpense(item)">Update</a></span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="allExp.length === 0">
+          <tr>
+            <td>No expenses incurred</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #shareExpOptions let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Share with?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="d-flex w-100 flex-row">
+      <div (click)="goToFriendShare()" class="link flex-grow-1 text-center">
+        Friends
+      </div>
+      <div (click)="goToGroupShare()" class="link flex-grow-1 text-center">
+        Groups
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,87 @@
+<div class="friends-main">
+  <ng-container *ngIf="!isDetailViewOn">
+    <div class="friends-content-wrapper mm-content-wrapper align-items-start flex-row">
+      <div class="d-flex mr-3"><button class="btn btn-primary mr-auto" (click)="newFriendSplit()">New Split</button>
+      </div>
+      <div class="friends-contents">
+        <div class=" d-flex flex-row mt-2 mb-5 justify-content-center">
+          <h5 class="mb-0 d-flex align-items-center mr-3 justify-content-center no-c">{{statusTxt}} total of </h5>
+          <span class="font-28 light-font"
+            [ngClass]="{'warning-c': isUserOwesMoney, 'base-c': !isUserOwesMoney}">&#8377;{{total}}</span>
+        </div>
+        <table class="table friends-expense-list">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">I owe him</th>
+              <th scope="col">He owes me</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of friendsSplitData">
+              <td>{{item.userName}}</td>
+              <td class="credit">{{item.credit}}</td>
+              <td class="debt">{{item.debt}}</td>
+              <td>
+                <div class="d-flex flex-column">
+                  <!-- <div class="link">Update</div> -->
+                  <div class="link" (click)="getFriendSplitHistory(item.userId)">History</div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isDetailViewOn">
+    <div class="friends-content-wrapper mm-content-wrapper align-items-start flex-row">
+      <div class="d-flex mr-3"><button class="btn btn-primary mr-auto" (click)="backToDetails()">Back</button>
+      </div>
+      <div class="friends-contents">
+
+        <div class=" d-flex flex-row mt-2 mb-5 justify-content-center">
+
+          <h5 class="mb-0 d-flex align-items-center mr-3 justify-content-center no-c">{{statusTxt}} total of </h5>
+          <span class="font-28 light-font"
+            [ngClass]="{'warning-c': isUserOwesMoney, 'base-c': !isUserOwesMoney}">&#8377;{{total}}</span>
+        </div>
+        <table class="table friends-expense-list">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Shared on</th>
+              <th scope="col">Total</th>
+              <th scope="col">Group Expense</th>
+              <th scope="col">Expense Title</th>
+              <th scope="col">You paid</th>
+              <th scope="col">Your share</th>
+              <th scope="col">I owe him</th>
+              <th scope="col">He owes me</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of friendSplitHistory">
+              <td>{{formatDate(item.createdOn)}}</td>
+              <td class="credit">{{item.totalAmt}}</td>
+              <td class="debt">{{item.isGrpExpense}}</td>
+              <td>{{item.groupTitle}}</td>
+              <td class="credit">{{hasPaid(item)}}</td>
+              <td class="debt">{{item.amount}}</td>
+              <td class="warning-c">{{userOwes(item)}}</td>
+              <td class="credit base-c">{{userGets(item)}}</td>
+              <td>
+                <div class="d-flex flex-column">
+                  <!-- <div class="link">Update</div> -->
+                  <div class="link" (click)="moreDetails(item.splitId)">More</div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+
+</div>

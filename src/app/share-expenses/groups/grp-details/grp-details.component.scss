@@ -1,0 +1,11 @@
+.groups-content-wrapper {
+  flex-direction: row;
+  align-items: flex-start;
+
+  .groups-expense-list {
+    width: 400px;
+    td{
+      text-align: center;
+    }
+  }
+}

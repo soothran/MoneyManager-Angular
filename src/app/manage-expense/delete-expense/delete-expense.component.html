@@ -1,0 +1,73 @@
+<div class="delete-expense-main">
+  <div class="delete-expense-header">
+
+    <div class="delete-expense-content flex-row  mm-content-wrapper">
+      <ng-container *ngIf="expToUpdate !== undefined">
+        <div class="form-wrapper">
+          <form [formGroup]="expForm">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" formControlName="title" value="" class="form-control" id="title"
+                aria-describedby="emailHelp" placeholder="Enter a tile">
+              <div class="form-error-messages"
+                *ngIf="expForm.controls['title'].dirty &&  expForm.controls['title'].value == ''"
+                id="error-no-categoryId">
+                You must give a title
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input type="text" formControlName="amount" value="" class="form-control" id="amount"
+                aria-describedby="emailHelp" placeholder="Enter the amount">
+              <small id="emailHelp" class="form-text text-muted">Amount incurred in the expense</small>
+              <div class="form-error-messages"
+                *ngIf="expForm.controls['amount'].dirty && expForm.controls['amount'].invalid && expForm.controls['amount'].value === ''"
+                id="error-no-categoryId">
+                You must enter an amount
+              </div>
+              <div class="form-error-messages"
+                *ngIf="expForm.controls['amount'].dirty && expForm.controls['amount'].invalid && expForm.controls['amount'].value === ''"
+                id="error-no-categoryId">
+                You must enter an amount
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select class="form-control" formControlName="categoryId" id="category">
+                <option *ngFor="let category of categories" [ngValue]="category.categoryId">{{category.categoryName}}
+                </option>
+              </select>
+              <div class="form-error-messages"
+                *ngIf="expForm.controls['categoryId'].dirty &&  expForm.controls['categoryId'].value == ''"
+                id="error-no-categoryId">
+                You must select a category
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">Notes if any</label>
+              <textarea formControlName="notes" class="form-control" id="notes" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="imgFile">Any reference image</label>
+              <input type="file" #imgInput name="imgInput" (change)="fileChange($event)" accept=".png,.jpeg,.jpg"
+                class="form-control-file" id="imgFile">
+            </div>
+            <div class="btn-wrapper">
+              <button type="submit" (click)="updateExpense()" class="btn btn-primary">Update</button>
+
+            </div>
+          </form>
+        </div>
+        <div class="delete-link-wrapper">
+          <a routerLink="" (click)="deleteExpense()">Delete this expense?</a>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="expToUpdate === undefined">
+        <div class="d-flex">
+          <div>No expense in queue to update</div>
+          <div class="link m-0 ml-2" (click)="viewExpense()">pick one</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

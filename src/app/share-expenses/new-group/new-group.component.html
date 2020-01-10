@@ -1,0 +1,43 @@
+<div class="">
+  <div class="">
+    <div class="add-group-content mm-content-wrapper">
+      <div class="form-wrapper">
+        <form [formGroup]="newGrpForm">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" formControlName="title" class="form-control" id="title" aria-describedby="grpHelp"
+              placeholder="Enter group tile">
+          </div>
+          <!-- <div class="form-group">
+            <label for="friend">Pick friends</label>
+            <select formControlName="friendId" class="form-control" id="friend" placeholder="Pick friend">
+              <option *ngFor="let friend of friends" [ngValue]="friend.friendId">{{friend.userName}}
+              </option>
+            </select>
+          </div> -->
+          <div class="">
+            <table *ngIf="friends !== undefined && friends !== null" class="table friends-expense-list">
+              <tbody>
+                <tr *ngFor="let friend of friends">
+                  <td>{{friend?.userName}}</td>
+                  <td class="debt">{{friend?.emailId}}</td>
+                  <!-- <td class="credit">{{item.contactNumber}}</td> -->
+                  <td>
+                    <div class="d-flex flex-column">
+                      <span class="link" *ngIf="!isMemeberAdded(friend.userId)" (click)="addToGrp(friend.userId)">Add</span>
+                      <span class="link" *ngIf="isMemeberAdded(friend.userId)" (click)="removeMember(friend.userId)">Remove</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="btn-wrapper">
+            <button type="submit" (click)="addGroup()" class="btn btn-primary">Add</button>
+            <!-- <button type="submit" class="btn btn-secondary" (click)="navToSignup()">New user? Sign up</button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

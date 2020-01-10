@@ -1,0 +1,25 @@
+<div class="manage-expense-main">
+  <div class="manage-expense-header inner-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <ul class="nav justify-content-center">
+            <li class="nav-item" [ngClass]="{'selected': getRoute() === '/expense/add'}">
+              <button (click)="expenseInernalNav('add')" class="nav-link active">Add Expense</button>
+            </li>
+            <li class="nav-item" [ngClass]="{'selected': getRoute() === '/expense/update'}">
+              <button (click)="expenseInernalNav('update')" class="nav-link">Update/ Remove Expense</button>
+            </li>
+            <li class="nav-item" [ngClass]="{'selected': getRoute() === '/expense/view'}">
+              <button (click)="expenseInernalNav('view')" class="nav-link" href="#">View previous expenses</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+

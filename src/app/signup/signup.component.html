@@ -1,0 +1,80 @@
+<div class="d-flex flex-column signup-main">
+  <div class="signup-wrapper">
+    <h1>Signup</h1>
+    <div class="signup-form-wrapper">
+      <form [formGroup]="regForm">
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input type="text" formControlName="userName" class="form-control" id="username"
+            aria-describedby="usernameHelp" placeholder="Enter username">
+          <small id="usernameHelp" class="form-text text-muted">Choose a username</small>
+          <div class="form-error-messages"
+            *ngIf="regForm.controls['userName'].dirty && regForm.controls['userName'].invalid && regForm.controls['userName'].value == ''"
+            id="error-no-username">
+            You must enter a username
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp"
+            placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">Your Email ID</small>
+          <div class="form-error-messages"
+            *ngIf="regForm.controls['email'].dirty && regForm.controls['email'].invalid && regForm.controls['email'].value == ''"
+            id="error-no-email">
+            You must enter a email
+          </div>
+          <div class="form-error-messages"
+            *ngIf="regForm.controls['email'].dirty && regForm.controls['email'].invalid && regForm.controls['email'].value !== ''"
+            id="error-no-email">
+            You must enter a valid email
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contactNumber">Contact Number</label>
+          <input type="text" formControlName="contactNumber" class="form-control" id="contactNumber"
+            aria-describedby="contactNumberHelp" placeholder="Enter your contact number">
+          <small id="contactNumberHelp" class="form-text text-muted">Your contact number</small>
+          <div class="form-error-messages"
+            *ngIf="regForm.controls['contactNumber'].dirty && regForm.controls['contactNumber'].invalid && regForm.controls['contactNumber'].value == ''"
+            id="error-no-contactNumber">
+            You must enter a contact number
+          </div>
+          <div class="form-error-messages"
+            *ngIf="regForm.controls['contactNumber'].dirty && regForm.controls['contactNumber'].invalid && regForm.controls['contactNumber'].value !== ''"
+            id="error-no-contactNumber">
+            You must enter a valid contact number
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
+          <div class="form-error-messages"
+            *ngIf="regForm.controls['password'].dirty && regForm.controls['password'].invalid && regForm.controls['password'].value == ''"
+            id="error-no-password">
+            You must choose a password
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
+            placeholder="Re-enter Password">
+          <div class="form-error-messages"
+            *ngIf="regForm.controls['confirmPassword'].dirty && regForm.controls['confirmPassword'].invalid && regForm.controls['confirmPassword'].value == ''"
+            id="error-no-confirmPassword">
+            Please re-enter the password
+          </div>
+          <div class="form-error-messages"
+            *ngIf="regForm.controls['confirmPassword'].dirty && regForm.controls['confirmPassword'].value !== regForm.controls['password'].value  && regForm.controls['confirmPassword'].value !== ''"
+            id="error-no-confirmPassword">
+            Passwords does not match
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <button type="submit" (click)="doRegister()" class="btn btn-primary">Register</button>
+          <button type="submit" (click)="resetForm()" class="btn btn-secondary">Reset all</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

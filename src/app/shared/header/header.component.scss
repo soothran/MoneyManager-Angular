@@ -1,0 +1,38 @@
+.header-main {
+  padding: 20px 20px 0;
+  width: 100%;
+  background: #03a678;
+
+  .header-wrapper {
+    justify-content: left;
+    width: 100%;
+
+    .logo-wrapper {
+      h1 {
+        margin-bottom: 10px;
+
+        a {
+          color: #fff;
+          white-space: nowrap;
+        }
+      }
+
+      h6 {
+        color: #fff;
+      }
+    }
+
+    .nav-wrapper {
+      flex-grow: 1;
+      justify-content: end;
+
+      ul {
+        margin-top: 10px;
+      }
+
+      .nav-link {
+        color: #fff;
+      }
+    }
+  }
+}

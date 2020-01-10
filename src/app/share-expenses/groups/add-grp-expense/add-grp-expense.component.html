@@ -1,0 +1,42 @@
+<div class="share-main">
+  <div class="friends-content-wrapper mm-content-wrapper">
+    <ng-container *ngIf="groups.length>0 && expense !== undefined">
+      <div class="share-content-wrapper">
+        <form class="form-wrapper" [formGroup]="selectGrpForm">
+          <div class="form-group">
+            <label for="friend">Select a group</label>
+            <select formControlName="groupId" (change)="selectGrp($event)" class="form-control" id="groupId"
+              placeholder="Group">
+              <option *ngFor="let group of groups" [ngValue]="group.groupId">{{group.title}}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="add-grp-content d-flex" *ngIf="members.length > 0">
+        <form [formGroup]="grpSplitForm" (ngSubmit)="splitGrpExpense()">
+          <label class=" mr-3" formArrayName="isChecked" *ngFor="let item of grpSplitForm.controls.isChecked.controls; let i = index">
+            <input type="checkbox" (change)="reCalcShare(i)" [formControlName]="i">
+            {{memberData[i].userName}}
+
+          </label>
+          <div class="form-group" formArrayName="members"
+            *ngFor="let member of grpSplitForm.controls.members.controls; let i = index">
+            <input type="number" [formControlName]="i" class="form-control" aria-describedby="emailHelp"
+              placeholder="Enter the amount">
+            <small id="amtHelp" class="form-text text-muted">{{memberData[i].userName}}'s share</small>
+          </div>
+          <div class="btn-wrapper">
+            <button class="btn btn-primary">submit</button>
+          </div>
+        </form>
+      </div>
+    </ng-container>
+    <div class="" *ngIf="expense == undefined">
+      <div class="">
+        <div class="">No expense in queue to share</div>
+        <div class="link" (click)="viewExpenses()">Pick one to proceed</div>
+      </div>
+    </div>
+  </div>
+</div>

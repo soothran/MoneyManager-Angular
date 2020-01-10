@@ -1,0 +1,29 @@
+<div class="se-main">
+    <div class="se-header inner-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <ul class="nav justify-content-center">
+              <li class="nav-item" [ngClass]="{'selected': getRoute('/share/friends')}">
+                <button (click)="shareExpensesInernalNav('friends')" class="nav-link active">With Friends</button>
+              </li>
+              <li class="nav-item" [ngClass]="{'selected': getRoute('/share/groups')}">
+                <button (click)="shareExpensesInernalNav('groups')" class="nav-link">Group Expenses</button>
+              </li>
+              <li class="nav-item" [ngClass]="{'selected': getRoute('/share/new-friends')}">
+                <button (click)="shareExpensesInernalNav('new-friends')" class="nav-link">Add friends to community</button>
+              </li>
+              <li class="nav-item" [ngClass]="{'selected': getRoute('/share/new-group')}">
+                <button (click)="shareExpensesInernalNav('new-group')" class="nav-link">Create group</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <router-outlet></router-outlet>
+  
+  

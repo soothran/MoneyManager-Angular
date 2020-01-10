@@ -1,0 +1,38 @@
+<div class="container home-main">
+  <div class="row">
+    <div class=" home-contents col-12">
+      <div class="home-msg-wrapper">
+        <h1 *ngIf="expenseData.length > 0 && !isCaution" class="text-center">
+          Congratulations.</h1>
+        <h1 *ngIf="expenseData.length > 0 &&  isCaution" class="warning-c text-center">
+          Caution</h1>
+        <h3 class="text-center">{{calcPercent()}}
+        </h3>
+      </div>
+      <div class="home-msg-wrapper">
+        <h3 class="no-c text-center">
+          <span *ngIf="budgetAmt < totalExp" class="warning-c">Alert!</span>
+          {{budgetTxt()}}
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="dc-wrapper">
+        <div class="dc-overview base-gradient">
+          &#8377; {{totalExp}}
+        </div>
+        <h5 class="dc-text">Expense incurred this month</h5>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="dc-wrapper">
+        <div class="dc-overview  base-gradient">
+          &#8377; {{totalInc}}
+        </div>
+        <h5 class="dc-text">This month income</h5>
+      </div>
+    </div>
+  </div>
+</div>

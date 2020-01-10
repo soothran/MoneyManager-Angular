@@ -1,0 +1,35 @@
+.share-content-wrapper {
+  max-width: 600px;
+
+  .share-conents {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-bottom: 16px;
+
+    .lbl {
+      font-size: 18px;
+      font-weight: 500;
+      color: rgb(80, 78, 78);
+      width: 130px;
+    }
+
+    .val-txt {
+
+      font-size: 22px;
+      font-weight: 300;
+      color: #000;
+    }
+
+    .rad-grp {
+      margin-bottom: 32px;
+      .fade-btn{
+          opacity: 0.2;
+          border: none;
+
+      }
+    }
+  }
+
+}

@@ -1,0 +1,47 @@
+<div class="d-flex flex-column login-main">
+  <div class="login-wrapper">
+    <h1>Login</h1>
+    <div class="login-form-wrapper">
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" formControlName="userName" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+            placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">Your registered Email ID</small>
+          <div class="form-error-messages"
+            *ngIf="loginForm.controls['userName'].dirty && loginForm.controls['userName'].invalid && loginForm.controls['userName'].value == ''"
+            id="error-no-username">
+            You must enter a username
+          </div>
+          <div class="form-error-messages" *ngIf="loginForm.controls['userName'].dirty && loginForm.controls['userName'].invalid && loginForm.controls['userName'].hasError('minlength')"
+            id="error-minlength-username">
+            You must enter atleast 3 character username
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" formControlName="password" class="form-control" id="loginPassword" placeholder="Password"><div class="form-error-messages"
+          *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].invalid && loginForm.controls['password'].value == ''"
+          id="error-no-username">
+          You must enter a password
+        </div>
+        <div class="form-error-messages" *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].hasError('minlength')"
+          id="error-minlength-password">
+          You must enter atleast 6 character password
+        </div>
+        </div>
+        <div class="btn-wrapper">
+          <button type="submit" (click)="doLogin()" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-secondary" (click)="navToSignup()">New user? Sign up</button>
+        </div>
+        <div class="form-error-messages" *ngIf="isLoginFailed  === true" id="error-unauthorised-user">
+          {{getLoginErrorMessage()}}
+        </div>
+      </form>
+      <div class=" d-none forgot-links">
+        <a class="link" [routerLink]="['/forgot-password']">Forgot passowrd</a>
+        <a class="link" [routerLink]="['/forgot-email']">Forgot Email ID</a>
+      </div>
+    </div>
+  </div>
+</div>

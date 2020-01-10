@@ -1,0 +1,33 @@
+<div class="groups-main">
+    <div class="groups-content-wrapper mm-content-wrapper">
+        <div class="d-flex mr-3"><button class="btn btn-primary mr-auto" (click)="newGrpSplit()">New Split</button></div>
+       <div class="groups-contents">
+        <!-- <div class=" d-flex flex-row mt-2 mb-5 justify-content-center">
+          <h5 class="mb-0 d-flex align-items-center mr-3 justify-content-center no-c">You are owed a total of </h5>
+          <span class="font-28 base-c light-font">&#8377;701</span>
+        </div> -->
+        <table class="table groups-expense-list">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Groups</th>
+              <!-- <th scope="col">Your debt</th>
+              <th scope="col">You get</th>
+              <th scope="col">Action</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of groups">
+              <td>{{item.title}}</td>
+              <!-- <td class="debt">{{totalGrpDebt(item.groupId)}}</td>
+              <td class="credit">{{totalGrpCredit(item.groupId)}}</td>
+              <td>
+                <div class="d-flex flex-column">
+                  <span><a href="">View</a></span>
+                </div>
+              </td> -->
+            </tr>
+          </tbody> 
+        </table>
+      </div>
+    </div>
+  </div>

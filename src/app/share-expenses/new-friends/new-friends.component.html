@@ -1,0 +1,20 @@
+<div class="">
+  <div class="form-wrapper">
+    <form [formGroup]="searchForm">
+      <div class="form-group">
+        <label for="emailId">Search friend by email</label>
+        <input type="text" formControlName="emailId" class="form-control" id="emailId" aria-describedby="emailHelp"
+          placeholder="Enter email">
+      </div>
+      <div class="btn-wrapper">
+        <button type="submit" (click)="search()" class="btn btn-primary">Search</button>
+        <!-- <button type="submit" class="btn btn-secondary" (click)="navToSignup()">New user? Sign up</button> -->
+      </div>
+    </form>
+  </div>
+  <div class="friends-wrapper" *ngIf="friend !== undefined && friend !== null">
+    <div class="friend-name">{{friend?.userName}}</div>
+    <div class="friend-email">{{friend?.emailId}}</div>
+    <div class="friend-add link" (click)="addFriend(friend.userId)">Add friend to community</div>
+  </div>
+</div>
