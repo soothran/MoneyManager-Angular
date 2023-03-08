@@ -2,6 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
+Prerequisites
+
+- node (version 14 or greater)
+- npm version - 6+
+- angular cli (install command - `npm install -g @angular/cli`)
+
+
+Steps to run
+
+- clone the repo
+- open vscode
+- open the root folder of the cloned repo in vscode
+- open terminal in vscode
+- run the command - `npm install`
+- once all packages are installed successfully, run the app using the command  - `ng serve`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
